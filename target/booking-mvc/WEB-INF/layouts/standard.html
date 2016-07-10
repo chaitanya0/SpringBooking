@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org"
+      lang="en">
+
+<head>
+
+    <title>Spring Travel: Spring MVC and Web Flow Reference Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css" media="screen, projection"
+          href="../../styles/blueprint/screen.css"
+          th:href="@{/resources/styles/blueprint/screen.css}" />
+
+    <link rel="stylesheet" type="text/css" media="print"
+          href="../../styles/blueprint/print.css"
+          th:href="@{/resources/styles/blueprint/print.css}" />
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" media="screen, projection"
+              href="../../styles/blueprint/ie.css"
+              th:href="@{/resources/styles/blueprint/ie.css}" />
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="../../styles/booking.css"
+          th:href="@{/resources/styles/booking.css}" />
+
+
+    <!-- The following styles and scripts are served from spring-js-resources-{ver}.jar -->
+
+    <link rel="stylesheet" type="text/css"
+          href="#" th:href="@{/resources/dijit/themes/tundra/tundra.css}" />
+
+    <script type="text/javascript" src="#" th:src="@{/resources/dojo/dojo.js}"></script>
+    <script type="text/javascript" src="#" th:src="@{/resources/spring/Spring.js}"></script>
+    <script type="text/javascript" src="#" th:src="@{/resources/spring/Spring-Dojo.js}"></script>
+
+</head>
+
+
+<body class="tundra">
+
+<div id="page" class="container">
+
+    <div id="header">
+        <div id="topbar">
+            <p sec:authorize="hasRole('ROLE_USER')" th:if="${#authentication}">
+                <span style="float:left;">Welcome, <span sec:authentication="name">Dear User</span> |
+                <a href="#" th:href="@{/logout}">Logout</a></span>
+                <a href="#" th:href="@{/admin}" style="float:right;">Administration</a>
+            </p>
+            <p sec:authorize="hasRole('ROLE_ANONYMOUS')">
+                <a href="#" th:href="@{/login}" style="float:left;">Login</a>
+                <a href="#" th:href="@{/admin}" style="float:right;">Administration</a>
+            </p>
+        </div>
+        <div id="logo">
+            <p>
+                <a href="#" th:href="@{/}">
+                    <img src="../../images/header.jpg" th:src="@{/resources/images/header.jpg}" alt="Spring Travel" />
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="local" class="span-6">
+            <p>
+                <a href="http://www.thespringexperience.com">
+                    <img src="../../images/diplomat.jpg" th:src="@{/resources/images/diplomat.jpg}" alt="generic hotel" />
+                </a>
+            </p>
+            <p>
+                <a href="http://www.thespringexperience.com">
+                    <img src="../../images/springone2gx.jpeg" th:src="@{/resources/images/springone2gx.jpeg}" alt="SpringOne 2GX" />
+                </a>
+            </p>
+        </div>
+        <div id="main" class="span-18 last" tiles:include="body">
+
+          <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+          <!-- At runtime, the body of this <div> will be substituted by -->
+          <!-- Tiles in order to create the final HTML page that will be -->
+          <!-- sent to the browser.                                      -->
+          <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+          BODY PAGE GOES HERE!
+
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="footer">
+        <a href="http://www.springframework.org" style="float:left;">
+            <img src="../../images/powered-by-spring.png" th:src="@{/resources/images/powered-by-spring.png}" alt="Powered by Spring" />
+        </a>
+        <a href="http://lightadmin.org/demo/admin" th:href="@{/admin}" style="float: right;background-color: white;">
+            <img src="../../images/lightadmin-logo.png}" th:src="@{/resources/images/lightadmin-logo.png}" alt="Java web administration framework"/>
+        </a>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41784690-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter21714952 = new Ya.Metrika({id:21714952, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/21714952" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
